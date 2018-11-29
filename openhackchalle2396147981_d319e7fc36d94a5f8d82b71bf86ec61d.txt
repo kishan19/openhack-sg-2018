@@ -1,0 +1,81 @@
+Runtime is python
+Creating resource directory
+Downloading main file
+Processing dependency: https://openhackchalle3517267396.blob.core.windows.net/azureml/WebUpload/181128T075314-be2eb75a/driver.py
+Trying to download https://openhackchalle3517267396.blob.core.windows.net/azureml/WebUpload/181128T075314-be2eb75a/driver.py?sv=2017-04-17&sr=b&sig=iQsE76kdZuCcdU6glrk08ho5WdzfViWMYvWsUukwj5A%3D&st=2018-11-28T07%3A43%3A15Z&se=2018-11-29T07%3A53%3A15Z&sp=rcw as main.py
+downloading using http get
+HTTP GET took 0.05891561508178711 seconds.
+Saving config file
+parsing the dependency list
+validate and download dependencies
+Processing dependency: https://openhackchalle3517267396.blob.core.windows.net/azureml/WebUpload/181128T075314-09f6ddad/score.py
+Trying to download https://openhackchalle3517267396.blob.core.windows.net/azureml/WebUpload/181128T075314-09f6ddad/score.py?sv=2017-04-17&sr=b&sig=eGMDndspisR%2BGeyHEnsJ9aB8p%2FgeTf72%2FaL7fpxTtcg%3D&st=2018-11-28T07%3A43%3A15Z&se=2018-11-29T07%3A53%3A15Z&sp=rcw as score.py
+downloading using http get
+HTTP GET took 0.02619624137878418 seconds.
+Dependency is an artifact: https://southeastasia.experiments.azureml.net/artifact/v1.0/subscriptions/b9f1561c-1233-4607-be98-7a57891afb90/resourceGroups/openhack-sg-kishan/providers/Microsoft.MachineLearningServices/workspaces/openhack-challenge5/artifacts/prefix/contentinfo/LocalUpload/181128T154645-4e7ab2ad/challenge5.tar.gz
+Getting artifact SAS URL(s)
+Getting artifact SAS URL(s) took 0.11033797264099121 seconds.
+Artifact resolved to 1 URLs
+Dependency is to be unpacked
+Trying to download https://openhackchalle3517267396.blob.core.windows.net/azureml/LocalUpload/181128T154645-4e7ab2ad/challenge5.tar.gz?sv=2017-04-17&sr=b&sig=BTLA86EmLSMg5tzwNv1CYZIoYIBOUIVR968xyK80Gq8%3D&st=2018-11-28T07%3A43%3A28Z&se=2018-11-28T15%3A53%3A28Z&sp=r as challenge5.tar.gz
+downloading using http get
+HTTP GET took 0.1086275577545166 seconds.
+Compressed dependency downloaded to /mnt/batch/tasks/workitems/openhackchalle2396147981_d319e7fc36d94a5f8d82b71bf86ec61d/job-1/ice_task/wd/resources/azureml-models/challenge5/4/challenge5.tar.gz
+Dependency is a .tar so it will be extracted in place before copying to the Docker image
+Processing dependency: https://modelmgmtsoutheastasia.blob.core.windows.net/df611a70-718e-44dc-abb6-5d1fb42e2b2a/model_config_map.json
+Trying to download https://modelmgmtsoutheastasia.blob.core.windows.net/df611a70-718e-44dc-abb6-5d1fb42e2b2a/model_config_map.json?sv=2017-04-17&sr=b&sig=ZYVZmXAi%2BV%2BQF8MkYBY1wvq53x9YiRZy6etJCZarVeY%3D&st=2018-11-28T07%3A48%3A24Z&se=2019-11-28T07%3A53%3A24Z&sp=r as model_config_map.json
+downloading using http get
+HTTP GET took 0.034952640533447266 seconds.
+Dependency download took: 0.4842112064361572 s
+Checking to see if CUDA is requested and modifying Dockerfile accordingly
+Checking to see if requirements.txt exists and modifying Dockerfile accordingly
+pip requirements file found
+Trying to download https://openhackchalle3517267396.blob.core.windows.net/azureml/WebUpload/181128T075314-86ffdb5e/requirements.txt?sv=2017-04-17&sr=b&sig=F8%2FSVR33CCTbW%2BGppXh7UpitKioYe1pi4K%2BWNS8DqOY%3D&st=2018-11-28T07%3A43%3A15Z&se=2018-11-29T07%3A53%3A15Z&sp=rcw as requirements.txt
+downloading using http get
+HTTP GET took 0.02845168113708496 seconds.
+editing dockerfile to put in pip requirements
+Checking to see if conda env file exists and modifying Dockerfile accordingly
+Conda env file found
+Trying to download https://openhackchalle3517267396.blob.core.windows.net/azureml/WebUpload/181128T075315-5f3dfcae/myenv.yml?sv=2017-04-17&sr=b&sig=XPUnR449PWh1zMZFP786ermQdqGR0mDiiOQv2d%2FBXTs%3D&st=2018-11-28T07%3A43%3A16Z&se=2018-11-29T07%3A53%3A16Z&sp=rcw as env.yml
+downloading using http get
+HTTP GET took 0.024704933166503906 seconds.
+sanitizing conda env file
+dependencies:
+- pip:
+  - azureml-defaults==0.1.59
+- numpy
+- scikit-learn
+- scikit-image
+- opencv-python
+- pip=9
+
+editing dockerfile to put in conda env file
+Checking to see if docker steps file exists and modifying Dockerfile accordingly
+Building image with name openhackchalle2396147981.azurecr.io/sample:2
+Sending build context to Docker daemon  4.938MB
+
+Step 1/5 : FROM iceacrsea.azurecr.io/python-base-image:20181004221921
+ ---> 1673cf4adc9d
+Step 2/5 : COPY resources /var/azureml-app
+ ---> 4cab59eefbee
+Step 3/5 : RUN conda env update --name=root -f /var/azureml-app/env.yml && conda clean -aqy && rm -rf /root/.cache/pip
+ ---> Running in 0be495a35b74
+Solving environment: ...working... failed
+[91m
+ResolvePackageNotFound: 
+  - opencv-python
+
+[0mDocker image build failed
+Removing any dangling images
+The command '/bin/sh -c conda env update --name=root -f /var/azureml-app/env.yml && conda clean -aqy && rm -rf /root/.cache/pip' returned a non-zero code: 1
+Deleted: sha256:4cab59eefbee077610a9796da098144bd2cbec64b080dfdcc1caabc224e68981
+Docker image build took: 16.825948476791382
+Pruning docker cache
+Deleted Containers:
+0be495a35b746e8a1e56c24c947f54eb18152fb72a84db9889de3739d5018492
+
+Total reclaimed space: 30.18MB
+Docker pruning took: 1.8908896446228027 s
+Removing dependencies
+script done and exiting
+Total Time: 19.202616691589355 s
